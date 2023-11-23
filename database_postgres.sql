@@ -80,15 +80,21 @@ CREATE TABLE "siblings" (
    "student_id" INT NOT NULL REFERENCES "student" ON DELETE CASCADE,
 );
 
-CREATE TABLE "lesson_administration" (
- "lesson_admin_id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
+CREATE TABLE "scheduale" (
+ "schedual_id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
  "lesson_id" INT NOT NULL REFERENCES "lesson" ON DELETE CASCADE,
  "time" TIMESTAMP(20) NOT NULL,
- "price" FLOAT (100) NOT NULL,
  "school_id" INT NOT NULL REFERENCES "lesson" ON DELETE CASCADE,
  "instructor_id" INT NOT NULL REFERENCES "lesson" ON DELETE CASCADE,
- "discount_id" CHAR(100) NOT NULL REFERENCES "lesson" ON DELETE CASCADE,
- "type"  VARCHAR(100) NOT NULL,
+ "type_id"  VARCHAR(100) NOT NULL,
+);
+
+CREATE TABLE "lesson_price" (
+ "schedual_id" INT NOT NULL REFERENCES "schedual" ON DELETE CASCADE,  
+ "instructor_id" INT NOT NULL REFERENCES "lesson" ON DELETE CASCADE,
+ "type_id"  VARCHAR(100) NOT NULL,
+ "level" VARCHAR (10) NOT NULL,
+ "price" FLOAT (100) NOT NULL
 );
 
 CREATE TABLE "person_lesson"
@@ -108,8 +114,8 @@ CREATE TABLE "ensembles" (
 CREATE TABLE "group" (
    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
    "lesson_id" INT NOT NULL REFERENCES "lesson" ON DELETE CASCADE,
-   "minimum_nr_of_students" INT NOT NULL,
-   "maximum_nr_of_students" INT NOT NULL,
+   "minimum_participant" INT NOT NULL,
+   "maximum_participant" INT NOT NULL,
 );
 
 CREATE TABLE "individual" (
