@@ -13,7 +13,7 @@ CREATE TABLE email_person (
 ALTER TABLE email_person ADD CONSTRAINT PK_email_person PRIMARY KEY (id);
 
 
-CREATE TABLE instroment (
+CREATE TABLE instrument (
  id INT NOT NULL,
  instroment_id VARCHAR(100) NOT NULL UNIQUE,
  brand VARCHAR(100) NOT NULL,
