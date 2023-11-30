@@ -1,4 +1,4 @@
-CREATE TABLE "instroment" (
+CREATE TABLE "instrument" (
 	"instrument_id" INT GENERATE ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
 	"brand" VARCHAR (100) NOT NULL,
 	"quantity" INT (100) NOT NULL,
